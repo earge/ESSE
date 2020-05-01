@@ -1,0 +1,30 @@
+@using DynamicMVC.UI.DynamicMVC
+@using DynamicMVC.UI.DynamicMVC.Helpers
+@using DynamicMVC.UI.DynamicMVC.ViewModels.DynamicPropertyViewModels
+
+@model object
+
+@{
+    var dynamicPropertyEditorViewModel = (DynamicPropertyEditorViewModel)ViewData["DynamicPropertyEditorViewModel"];
+    var dynamicEditorDropDownViewModel = dynamicPropertyEditorViewModel.DynamicEditorDropDownViewModel;
+
+    var list = new List<SelectListItem>() {
+        new SelectListItem() {
+            Text="---"
+        }
+    };
+    list.AddRange(dynamicEditorDropDownViewModel.SelectListItems);
+
+    dynamicEditorDropDownViewModel.SelectListItems = list;
+}
+
+<div class="form-group">
+    @Html.DynamicLabelFor(m => m, dynamicPropertyEditorViewModel)
+    <div class="">
+        @Html.DropDownListFor(m => m, dynamicEditorDropDownViewModel.SelectListItems, 
+       new { @class = "form-control" })
+    </div>
+</div>
+
+
+

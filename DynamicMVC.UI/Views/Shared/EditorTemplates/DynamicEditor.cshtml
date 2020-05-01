@@ -1,0 +1,22 @@
+@{
+    var model = Model;
+    var controller = (DynamicMVC.UI.Controllers.DynamicController)this.ViewContext.Controller;
+
+    var TableName = controller.EntityType.Name;
+    var ColumnName = ((DynamicMVC.UI.DynamicMVC.ViewModels.DynamicPropertyViewModels.DynamicPropertyEditorViewModel)this.ViewContext.ViewData.Values.ToList()[1]).DisplayName;
+
+
+    string resourceKey = "Table_" + TableName + "_ColumnLabel_" + ColumnName;
+
+    var dbRes = new DbResourceProvider();
+}
+@model object
+<div class="form-group">
+    @*@Html.LabelFor(m => m)*@
+    <label>
+        @dbRes.GetResource(resourceKey, Culture)
+    </label>
+    <div class="">
+        @Html.TextBoxFor(m => m, new { @class = "form-control" })
+    </div>
+</div>
