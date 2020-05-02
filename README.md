@@ -1,2 +1,4 @@
 # ESSE
-EARGE Software Solution Environment
+Enterprise Software Solution Environment
+
+
